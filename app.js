@@ -15,7 +15,7 @@ yargs.command({
       type: "string",
     },
     body: {
-      describe: "Noe body",
+      describe: "Note body",
       demandOption: true,
       type: "string",
     },
