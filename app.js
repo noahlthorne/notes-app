@@ -1,6 +1,6 @@
 const chalk = require("chalk");
 const yargs = require("yargs");
-const note = require("./notes.js");
+const notes = require("./notes.js");
 const fetch = require("node-fetch");
 
 yargs.version("1.1.0");
@@ -21,16 +21,22 @@ yargs.command({
     },
   },
   handler: function (argv) {
-    console.log("Title: ", argv.title);
-    console.log("Body: ", argv.body);
+    notes.addNote(argv.title, argv.body);
   },
 });
 
 yargs.command({
   command: "remove",
   describe: "Removes a note",
-  handler: function () {
-    console.log("removing a note all yall");
+  builder: {
+    title: {
+      describe: "Note title",
+      demandOption: true,
+      type: "string",
+    },
+  },
+  handler: function (argv) {
+    notes.remmoveNote(argv.title);
   },
 });
 
